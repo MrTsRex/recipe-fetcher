@@ -2,17 +2,15 @@
 
 <table border="1">
   <tr>
-  	<th>Social Rank</th>
+  	<th>Image</th>
   	<th>Name</th>
-  	<th>Publisher</th>
+  	<th>Link</th>
   </tr>
-  <%if @recipes%>
-    <% @recipes.each do |recipe| %>
-      <tr class=<%= cycle('even', 'odd') %>>
-        <td><%= recipe["social_rank"]%></td>
-        <td><%= recipe["title"] %></td>
-        <td><%= recipe["publisher"] %></td>
-      </tr>
-    <% end %>
-  <%end%>
+  <% @recipes.each do |recipe| %>
+    <tr class=<%= cycle('even', 'odd') %>>
+      <td><%= image_tag(recipe["image_url"])%></td>
+      <td><%= recipe["title"] %></td>  
+      <td><%= link_to(recipe["source_url"])%></td>             
+    </tr>
+  <% end %>
 </table>

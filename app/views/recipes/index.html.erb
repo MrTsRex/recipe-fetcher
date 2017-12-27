@@ -1,16 +1,29 @@
-<h1>Searching for - <%= @search_term %></h1>
 
-<table border="1">
-  <tr>
-  	<th>Image</th>
-  	<th>Name</th>
-  	<th>Link</th>
-  </tr>
-  <% @recipes.each do |recipe| %>
-    <tr class=<%= cycle('even', 'odd') %>>
-      <td><%= image_tag(recipe["image_url"])%></td>
-      <td><%= recipe["title"] %></td>  
-      <td><%= link_to(recipe["source_url"])%></td>             
-    </tr>
-  <% end %>
-</table>
+
+<%= form_tag({action: :index}, method: "get",:id => 'form') do %>
+  <%= label_tag(:q, "What ingredient do you have today Mrs. Palmer?") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search for recipes", :id => 'submit' ) %>
+<% end %>
+<%if params[:q]!=nil && @search_term.length!=0%>
+  <h1>Recipes with <%= params[:q] %></h1>
+  <%if(@recipes.length!=0) %>
+    <table border="1">
+      <tr>
+      	<th>Image</th>
+      	<th>Name</th>
+      	<th>Social Rank</th>
+      </tr>      
+        <% @recipes.each do |recipe| %>
+          <tr class=<%= cycle('even', 'odd') %>>
+            <td><%= link_to image_tag(recipe["image_url"], height: '300', width: '300'), recipe["source_url"] %></td>
+            <td ><%= link_to recipe["title"], recipe["source_url"], target: :_blank, :style=>'color:#FFFFFF;' %></td>  
+            <td><%= recipe["social_rank"]%></td>             
+          </tr>
+        <% end %>
+
+    </table>
+  <%else%>
+    <h2>Sorry, no Recipes for <%= @search_term %> found. </h2>
+  <%end%>
+<%end%>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head >
     <title>Recipe Hunter</title>
     <%= csrf_meta_tags %>
 
@@ -8,7 +8,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body >
+  <style type="text/css">
+  	body{
+  		background-color: #0f2634;
+  		color: #09C;
+  	}
+  </style>
     <%= yield %>
+    <p><div align="left">Powered By Food2Fork.com</div><div align="right">Created by Sandesh Joshi</div></p>
+
   </body>
 </html>

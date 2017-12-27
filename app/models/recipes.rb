@@ -3,7 +3,7 @@ class Recipes
   include HTTParty
   
   base_uri "http://food2fork.com/api"
-  default_params key: [YOUR-KEY] , fields: "social_rank,publisher"
+  default_params key: "4ff1780818b5dae27ef2ecffbc78e121" , fields: "social_rank,publisher"
   format :json
 
   def self.for (keyword)

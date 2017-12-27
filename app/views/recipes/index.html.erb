@@ -2,7 +2,7 @@
 
 <%= form_tag({action: :index}, method: "get",:id => 'form') do %>
   <%= label_tag(:q, "What ingredient do you have today Mrs. Palmer?") %>
-  <%= text_field_tag(:q) %>
+  <%= text_field_tag(:q,"", :id => 'text-control') %>
   <%= submit_tag("Search for recipes", :id => 'submit' ) %>
 <% end %>
 <%if params[:q]!=nil && @search_term.length!=0%>
